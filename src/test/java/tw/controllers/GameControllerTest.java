@@ -10,9 +10,6 @@ import tw.views.GameView;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-
-
-import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.fest.assertions.api.Assertions.assertThat;
@@ -34,7 +31,7 @@ public class GameControllerTest {
     public void begin_game_test() throws Exception{
         GameController gameController=new GameController(mock(Game.class),new GameView());
         gameController.beginGame();
-        assertThat(systemOut().endsWith("------Guess Number Game, You have 6 chances to guess!  ------\r\n")).isTrue();
+        assertThat(systemOut().endsWith("------Guess Number Game, You have 6 chances to guess!  ------\n")).isTrue();
     }
 
 
@@ -53,10 +50,10 @@ public class GameControllerTest {
 
         gameController.play(mockedCommand);
 
-        assertThat(systemOut().contains("Guess Result: 1A0B\r\n" +
-                "Guess History:\r\n" +
-                "[Guess Numbers: 1 5 6 7, Guess Result: 1A0B]\r\n")
+        assertThat(systemOut().contains("Guess Result: 1A0B\n" +
+                "Guess History:\n" +
+                "[Guess Numbers: 1 5 6 7, Guess Result: 1A0B]\n")
                 ).isTrue();
-        assertThat(systemOut().contains("success\r\n")).isTrue();
+        assertThat(systemOut().contains("success\n")).isTrue();
     }
     }
