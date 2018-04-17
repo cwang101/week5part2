@@ -15,7 +15,7 @@ import java.io.PrintStream;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
-
+import static org.fest.assertions.api.Assertions.assertThat;
 /**
  * 在GameControllerTest文件中完成GameController中对应的单元测试
  */
@@ -34,7 +34,7 @@ public class GameControllerTest {
     public void begin_game_test() throws Exception{
         GameController gameController=new GameController(mock(Game.class),new GameView());
         gameController.beginGame();
-        assertTrue(systemOut().endsWith("------Guess Number Game, You have 6 chances to guess!  ------\r\n"));
+        assertThat(systemOut().endsWith("------Guess Number Game, You have 6 chances to guess!  ------\r\n")).isTrue();
     }
 
 
@@ -53,10 +53,10 @@ public class GameControllerTest {
 
         gameController.play(mockedCommand);
 
-        assertTrue(systemOut().contains("Guess Result: 1A0B\r\n" +
+        assertThat(systemOut().contains("Guess Result: 1A0B\r\n" +
                 "Guess History:\r\n" +
                 "[Guess Numbers: 1 5 6 7, Guess Result: 1A0B]\r\n")
-                );
-        assertTrue(systemOut().contains("success\r\n"));
+                ).isTrue();
+        assertThat(systemOut().contains("success\r\n")).isTrue();
     }
     }
